@@ -81,6 +81,10 @@ if __name__ == "__main__":
 			theta = theta_kd[0:settings.theta_dim]
 			kd = (1 / (1 + np.exp(-theta_kd[-1]))) * settings.control_kd
 
+			sensor_left  = env.unwrapped.get_sensor_data('ts_r')
+			sensor_right  = env.unwrapped.get_sensor_data('ts_l')
+			print('sensor_left: ', sensor_left)
+			print('sensor_right: ', sensor_right)			
 
 			pi = Policy(theta=theta, action_size=settings.action_size, 
 						action_min=settings.action_min, action_max=settings.action_max,
